@@ -1,0 +1,25 @@
+1.
+Paper on energy efficency of analog. Bascially point of why Analog
+Concept / motivation (orders-of-magnitude potential)
+
+T. Gokmen & Y. Vlasov, “Acceleration of Deep Neural Network Training with Resistive Cross-Point Devices,” Frontiers in Neuroscience, 2016.
+
+Why: this is the original “Resistive Processing Unit (RPU)” paper that underlies AIHWKIT. They explicitly argue that local, in-memory weight storage can accelerate DNN training by orders of magnitude while using much less power because it eliminates weight shuttling between memory and compute.
+
+2.
+Then after we know why analog we modify some of its hyperparams and see how well it does when compared to digital.
+
+we tested 3 params and recorded accuracy and compared with digital
+forward.out_noise → how noisy the function evaluation is (activations).
+backward.out_noise → how noisy the gradient information is.
+desired_bl → how finely you can adjust weights per step (update precision).
+
+Real hardware:
+The actual values come from physics + circuit design:
+device noise, cell behavior → what out_noise and step size really are,
+driver/ADC design and update scheme → what desired_bl can be.
+“If my analog hardware were this clean/noisy and this precise/coarse in updates, what accuracy do I get for this model and training budget?”
+
+3.
+The meaning then is based on the analog energy efficency paper we should tolerate noise based off of the 3 params to a degree of ...
+
